@@ -9,6 +9,10 @@ $(document).ready(function () {
     var hour = now[0]+now[1]; // digit in front single digit and 12h time
     var min = now[2]+now[3];
     var sec = now[4]+now[5];
+    $('#clock .hour').html(hour);
+    $('#clock .minute').html(min);
+    $('#clock .second').html(sec);
+    
     $('#hour .time').html(hour);
     $('#minute .time').html(min);
     $('#second .time').html(sec);

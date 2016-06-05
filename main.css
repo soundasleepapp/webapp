@@ -4,6 +4,33 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+#app {
+  width: 980px;
+  background-color: #DDDDDD;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#app > div {
+  display: inline-block;
+  width: 300px;
+}
+
+#clock {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 50px;
+  text-align: center;
+}
+
+#morning {
+  margin-left: 20px;
+}
+
+#evening {
+  margin-right: 20px;
+}
+
 #hour, #minute, #second {
   display: inline-block;
   width: 50px;
