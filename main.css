@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#hour, #minute, #second {
+  display: inline-block;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.up, .down, .time {
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.up, .down {
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: #3FB665;
+}
+
+.up:hover, .down:hover {
+  background-color: #25A1A6;
+}
+
+/*#wrapper .colon {
+  line-height: 90px;
+  width: 10px;
+  text-align: center;
+  display: inline-block;
+}*/
