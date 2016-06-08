@@ -13,10 +13,6 @@ $(document).ready(function () {
     $('#clock .minute').html(min);
     $('#clock .second').html(sec);
     
-    $('#hour .time').html(hour);
-    $('#minute .time').html(min);
-    $('#second .time').html(sec);
-    
     setTimeout(update_time, 1000);
   })();
 });

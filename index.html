@@ -11,52 +11,56 @@
   <script src="script.js"></script>
 </head>
 <body>
-  <!--
-  Needs to be:
-  980px wide
-  -->
-  <div id="app">
-    <div id="morning">
-      Test
-    </div><div id="clock">
-      <span class="hour"></span>:<span class="minute"></span>:<span class="second"></span>
-    </div><div id="evening">
-      ing
-    </div>
-  </div>
   
-  <div id="wrapper">
-    <div id="hour">
-      <div class="up">
-        &#9650;
+  <div id="app"> <!-- Start app -->
+    <div id="morning"> <!-- Clock and timers start here -->
+      
+      <div class="up"> <!-- Morning alarm set -->
+        <div class="hour">&#9650;</div>
+        <div class="minute">&#9650;</div>
+        <div class="second">&#9650;</div>
       </div>
       <div class="time">
-        03
+        <span class="hour">02</span>:<span class="minute">45</span>:<span class="second">35</span>
       </div>
       <div class="down">
-        &#9660;
+        <div class="hour">&#9660;</div>
+        <div class="minute">&#9660;</div>
+        <div class="second">&#9660;</div>
       </div>
-    </div><div id="minute">
+      
+    </div><div id="clock"> <!-- Clock here -->
+      
+      <span class="hour"></span>:<span class="minute"></span>:<span class="second"></span>
+      
+    </div><div id="evening"> <!-- Evening alarm set -->
+      
       <div class="up">
-        &#9650;
+        <div class="hour">&#9650;</div>
+        <div class="minute">&#9650;</div>
+        <div class="second">&#9650;</div>
       </div>
       <div class="time">
-        26
+        <span class="hour">02</span>:<span class="minute">45</span>:<span class="second">35</span>
       </div>
       <div class="down">
-        &#9660;
+        <div class="hour">&#9660;</div>
+        <div class="minute">&#9660;</div>
+        <div class="second">&#9660;</div>
       </div>
-    </div><div id="second">
-      <div class="up">
-        &#9650;
-      </div>
-      <div class="time">
-        54
-      </div>
-      <div class="down">
-        &#9660;
-      </div>
+      
     </div>
-  </div>
+    
+    <div id="messages"> <!-- Alarm labels and alarm warnings -->
+      <div id="morningtext">Morning alarm</div>
+      <div id="alarminfo">Good morning!</div>
+      <div id="eveningtext">Evening alarm</div>
+    </div>
+    
+    <div id="help"> <!-- Help -->
+      <a href="help.html" target="_blank">For help, click here</a>
+    </div>
+  </div> <!-- End app -->
+  
 </body>
 </html>
