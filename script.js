@@ -122,9 +122,47 @@ $(document).ready(function () {
     update_hour(morning);
   });
   
+  $('#morning .down .min').click(function () {
+    morning.min--
+    update_min(morning);
+  });
+  
+  $('#morning .down .sec').click(function () {
+    morning.sec--
+    update_sec(morning);
+  });
+  
+  
+  
+  $('#evening .up .hour').click(function () {
+    evening.hour++
+    update_hour(evening);
+  });
+  
+  $('#evening .up .min').click(function () {
+    evening.min++
+    update_min(evening);
+  });
+  
+  $('#evening .up .sec').click(function () {
+    evening.sec++
+    update_sec(evening);
+  });
+  
+  $('#evening .down .hour').click(function () {
+    evening.hour--
+    update_hour(evening);
+  });
+  
+  $('#evening .down .min').click(function () {
+    evening.min--
+    update_min(evening);
+  });
+  
   $('#evening .down .sec').click(function () {
     evening.sec--
     update_sec(evening);
   });
+  
   
 });
