@@ -1,22 +1,7 @@
 $(document).ready(function () {
-  (function update_time() {
-    // Use moment.js to output the current time as a string
-    // hh is for the hours in 12-hour format,
-    // mm - minutes, ss-seconds (all with leading zeroes),
-    var now = moment().format("hhmmss");
-    
-    var time = {
-      hour: now[0] + now[1],
-      min: now[2] + now[3],
-      sec: now[4] + now[5]
-    };
-    
-    $('#clock .hour').html(time.hour);
-    $('#clock .min').html(time.min);
-    $('#clock .sec').html(time.sec);
-    
-    setTimeout(update_time, 1000);
-  })();
+  // Load alarm sound
+  var sound = new Audio("alarmsound.mp3");
+  sound.loop = true;
   
   // The moring alarm
   var morning = {
@@ -50,10 +35,10 @@ $(document).ready(function () {
       alarm.hour = 11;
     }
     
-    if (alarm.hour == 0) {
+    if (alarm.hour === 0) {
       $(alarm.selecthour).html(12);
     } else if (alarm.hour < 10) {
-      var withzero = "0" + alarm.hour
+      var withzero = "0" + alarm.hour;
       $(alarm.selecthour).html(withzero);
     } else {
       $(alarm.selecthour).html(alarm.hour);
@@ -71,7 +56,7 @@ $(document).ready(function () {
     }
     
     if (alarm.min < 10) {
-      var withzero = "0" + alarm.min
+      var withzero = "0" + alarm.min;
       $(alarm.selectmin).html(withzero);
     } else {
       $(alarm.selectmin).html(alarm.min);
@@ -89,19 +74,23 @@ $(document).ready(function () {
     }
     
     if (alarm.sec < 10) {
-      var withzero = "0" + alarm.sec
+      var withzero = "0" + alarm.sec;
       $(alarm.selectsec).html(withzero);
     } else {
       $(alarm.selectsec).html(alarm.sec);
     }
   };
   
+  
+  // Initialise alarms
   for (var i = 0; i < alarms.length; i++) {
     update_hour(alarms[i]);
     update_min(alarms[i]);
     update_sec(alarms[i]);
   }
   
+  
+  // Setting the morning alarm
   $('#morning .up .hour').click(function () {
     morning.hour++
     update_hour(morning);
@@ -133,7 +122,7 @@ $(document).ready(function () {
   });
   
   
-  
+  // Setting the evening alarm
   $('#evening .up .hour').click(function () {
     evening.hour++
     update_hour(evening);
@@ -165,4 +154,64 @@ $(document).ready(function () {
   });
   
   
+  // Click to silence alarm
+  $('#alarmstatus, #clock').click(function () {
+    if ($('#clock').hasClass('warning')) {
+      $('#clock').toggleClass('warning');
+      $('#alarmstatus').toggleClass('warning');
+      sound.pause();
+      if ($('#alarmstatus').data('nextalarm') == 'am') {
+        $('#alarmstatus').html("Have a good night's sleep!");
+      } else {
+        $('#alarmstatus').html("Have a good day!");
+      }
+    }
+  });
+  
+  
+  // Update time and check if alarm is due to go off
+  (function update_time() {
+    // Use moment.js to output the current time as a string
+    // hhmmss, in 12 hour format with leading zeroes
+    var now = moment().format("hhmmssA");
+    
+    var time = {
+      hour: now[0] + now[1],
+      min: now[2] + now[3],
+      sec: now[4] + now[5],
+      ampm: now[6] // A or P
+    };
+    
+    // Push time to webpage
+    $('#clock .hour').html(time.hour);
+    $('#clock .min').html(time.min);
+    $('#clock .sec').html(time.sec);
+    
+    // Check morning alarm
+    if (time.hour == morning.hour 
+        && time.min == morning.min 
+        && time.sec == morning.sec
+        && time.ampm == 'A') {
+      $('#alarmstatus').html('Time to wake up!');
+      $('#clock').toggleClass('warning');
+      $('#alarmstatus').toggleClass('warning');
+      $('#alarmstatus').data().nextalarm = 'pm';
+      sound.play();
+    }
+    
+    // Check evening alarm
+    if (time.hour == evening.hour 
+        && time.min == evening.min 
+        && time.sec == evening.sec
+        && time.ampm == 'P') {
+      $('#alarmstatus').html('Time to go to sleep!');
+      $('#clock').toggleClass('warning');
+      $('#alarmstatus').toggleClass('warning');
+      $('#alarmstatus').data().nextalarm = 'am';
+      sound.play();
+    }
+    
+    // Repeat every second (1000ms)
+    setTimeout(update_time, 1000);
+  })();
 });

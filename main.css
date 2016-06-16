@@ -1,5 +1,17 @@
 /* GLOBAL */
 
+@keyframes blink {
+    0%   {color: black;}
+    50%  {color: #d43636;}
+    100% {color: black;}
+}
+
+@-webkit-keyframes blink {
+    0%   {background-color: black;}
+    50%  {background-color: #d43636;}
+    100% {background-color: black;}
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -78,6 +90,11 @@ a {
   margin: 0 auto;
 }
 
+.warning { /* Red flashing animation */
+  animation: blink 1s infinite;
+  -webkit-animation: blink 2s infinite;
+}
+
 /* LABELS AND WARNINGS */
 
 #morningtext, #eveningtext {
@@ -90,7 +107,7 @@ a {
   color: rgba(0, 0, 0, 0.5);
 }
 
-#alarminfo {
+#alarmstatus {
   width: 400px;
   display: inline-block;
   margin-left: 20px;
