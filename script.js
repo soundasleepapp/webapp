@@ -215,6 +215,9 @@ $(document).ready(function () {
     setTimeout(update_time, 1000);
   })();
   
+
+});
+
   var run_alarm = function () {
     $('#alarmstatus').html('Time to wake up!');
     $('#clock').toggleClass('warning');
@@ -222,4 +225,3 @@ $(document).ready(function () {
     $('#alarmstatus').data().nextalarm = 'pm';
     sound.play();
   };
-});
